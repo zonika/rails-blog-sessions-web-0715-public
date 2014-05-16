@@ -8,7 +8,7 @@ resources: 1
 
 We built out a user model a while back, but we haven't been doing much with it. Let's build out a login system that prevents a user from writing a blog post or a comment without logging in. For now, we're going to build our own log in system with sessions.
  
-## Signing up and Logging in
+## Signing up
 
 1. Create a new migration for our users table that makes the following columns: email and password_digest (both strings).
 2. Add the 'bcrypt' gem to our Gemfile to use the Active Record [has_secure_password method](http://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html#method-i-has_secure_password), which adds methods to set and authenticate against BCrypt passwords. We don't need to create validations for password presence, because it's included within this method.
