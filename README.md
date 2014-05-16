@@ -20,11 +20,16 @@ We built out a user model a while back, but we haven't been doing much with it y
 6. Update our form for creating a new user to include email, password, and password confirmation. The passwords should have a password_field input.
 7. Let's also build out a _header partial that we render in application.html.erb that will have a Sign Up link, and other helpful navigation links.
 
-
-## Sessions
+## Logging in with Sessions
 
 Now that we have our sign up process built out, we can expand it into a log in system. A user who is signed up should be able to log in to see certain pages. We'll be using sessions, which allow an application to keep track of a user and allow them to perform actions that are remembered by the application without authenticating on every request. A session is comprised of a hash of values, usually a user's id and other information, as well as a session id. Learn more from the documentation on [sessions in rails](http://guides.rubyonrails.org/security.html#sessions).
 
 1. Generate a Sessions controller. We'll make the views later.
-2. Our sessions controller will handle two actions, creating a new session and destroying it. A new session is generated when a user logs in or signs up (which is handled on the users controller by the create method. 
-3. Build out the appropriate routes for these actions.
+2. Our sessions controller will handle two actions, creating a new session and destroying it. A new session is generated when a user logs in or signs up (which is handled on the users controller by the create method.
+3. In the create method, you will need to find a user by their email and authenticate it (calling `.authenticate`) on the password from params. Then assign the `session[:user_id]` to the user.id. Check out this blog post on [authentication](http://www.millwoodonline.co.uk/blog/using-hassecurepassword-for-rails-authentication) for more info.
+4. Build out the appropriate routes for these actions, and include a resource for sessions.
+5. Add to your _header nav links for logging out and loggin in, and render a form as a form_tag for logging in under sessions (make it a partial and render it in a new view); it should post to the sessions_path. 
+
+### Bonus
+
+1. In the application controller, make a private `helper_method` called `current_user` that will find a user by their session id and assign to an instance variable `@current_user`. This will help us in our header to render info about the logged in user, and create some view logic to only render a logout link if the user is logged in. Have the current user's name displayed too to let them know they're logged in.
