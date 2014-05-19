@@ -10,9 +10,9 @@ TAGS = ["adventurous", "aggressive", "agreeable", "alert", "alive", "amused", "a
 
 TAGS.each{|tag| Tag.create(:name  => tag)}
 
-crookshanks = User.create(:name => "Crookshanks")
+crookshanks = User.create(:name => "Crookshanks", :email => "crookshanks@cats.com", :password => "password", :password_confirmation => "password")
 
-baby_cat = User.create(:name => "Baby Cat")
+baby_cat = User.create(:name => "Baby Cat", :email => "babycat@cats.com", :password => "password", :password_confirmation => "password")
 
 adorable = Tag.create(:name => "adorable")
 

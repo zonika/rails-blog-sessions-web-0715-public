@@ -12,7 +12,7 @@ We built out a user model a while back, but we haven't been doing much with it y
  
 ## Signing up
 
-1. Create a new migration for our users table that makes the following columns: email and password_digest (both strings). Create a validation on email presence and uniqueness on the user model
+1. Create a new migration for our users table that makes the following columns: email and password_digest (both strings). Create a validation on email presence and uniqueness on the user model.
 2. Add the ['bcrypt' gem](https://github.com/codahale/bcrypt-ruby/tree/master) to our Gemfile to use the Active Record [has_secure_password method](http://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html#method-i-has_secure_password), which adds methods to set and authenticate against BCrypt passwords. We don't need to create validations for password presence, because it's included within this method.
 3. Now we have password and password_confirmation attributes (which we can permit in params on the users controller). Note that these aren't columns on our database, but attributes handled by the bcrypt gem.
 4. Let's fix our routes to have a route for signup that points to the new method on our users controller.
@@ -28,7 +28,7 @@ Now that we have our sign up process built out, we can expand it into a log in s
 2. Our sessions controller will handle two actions, creating a new session and destroying it. A new session is generated when a user logs in or signs up (which is handled on the users controller by the create method.
 3. In the create method, you will need to find a user by their email and authenticate it (calling `.authenticate`) on the password from params. Then assign the `session[:user_id]` to the user.id. Check out this blog post on [authentication](http://www.millwoodonline.co.uk/blog/using-hassecurepassword-for-rails-authentication) for more info.
 4. Build out the appropriate routes for these actions, and include a resource for sessions.
-5. Add to your _header nav links for logging out and loggin in, and render a form as a form_tag for logging in under sessions (make it a partial and render it in a new view); it should post to the sessions_path. 
+5. Add to your _header nav links for logging out and logging in, and render a form as a form_tag for logging in under sessions (make it a partial and render it in a new view); it should post to the sessions_path. 
 
 ## Authenticating with Sessions
 
@@ -37,5 +37,5 @@ Now that we have sessions, we can create conditionals on various actions in our 
 1. In the application controller, make a private `helper_method` called `current_user` that will find a user by their session id and assign to an instance variable `@current_user`. 
 2. Make another helper method `user_signed_in?` that checks for a session user_id and returns true or false
 3. Let's also make a method `authorize` that renders our login page if a `!user_signed_in?`. We're going to call this method as a [before_action](http://guides.rubyonrails.org/action_controller_overview.html#filters) on our comments and posts controllers that will run this check before the edit, update, create, new, and destroy methods.
-4. This will help us in our header to render info about the logged in user, and create some view logic to only render a logout link if the user is logged in. Have the current user's name displayed too to let them know they're logged in.
-5. Refactor our forms that handle new posts and comments to check if the user is signed in before they can post. TODO
+4. This will help us in our header to render info about the logged in user, and create some view logic to only render a logout link and new post link if the user is logged in. Have the current user's name displayed too to let them know they're logged in.
+5. Refactor our forms that handle new comments to check if the user is signed in.
