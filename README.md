@@ -1,5 +1,5 @@
 ---
-tags: rails, sessions, application controller inheritance, WIP
+tags: rails, sessions, application controller inheritance
 language: ruby
 resources: 5
 ---
