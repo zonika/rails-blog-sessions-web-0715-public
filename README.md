@@ -28,7 +28,8 @@ Now that we have our sign up process built out, we can expand it into a log in s
 2. Our sessions controller will handle two actions, creating a new session and destroying it. A new session is generated when a user logs in or signs up (which is handled on the users controller by the create method.
 3. In the create method, you will need to find a user by their email and authenticate it (calling `.authenticate`) on the password from params. Then assign the `session[:user_id]` to the user.id. Check out this blog post on [authentication](http://www.millwoodonline.co.uk/blog/using-hassecurepassword-for-rails-authentication) for more info.
 4. Build out the appropriate routes for these actions, and include a resource for sessions.
-5. Add to your _header nav links for logging out and logging in, and render a form as a form_tag for logging in under sessions (make it a partial and render it in a new view); it should post to the sessions_path. 
+5. Add to your _header nav links for logging out and logging in, and render a form as a form_tag for logging in under sessions (make it a partial and render it in a new view); it should post to the sessions_path.
+6. Now we can associate submitting a post and comment with a user via the `session["user_id"]`. Include a `hidden_field` tag on both forms to handle that association. Now refactor the show pages to display the user for comments and posts.
 
 ## Authenticating with Sessions
 
@@ -46,7 +47,7 @@ Now that we have sessions, we can create conditionals on various actions in our 
 
 [has_secure_password method](http://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html#method-i-has_secure_password)
 
-[sessions in rails](http://guides.rubyonrails.org/security.html#sessions).
+[sessions in rails](http://guides.rubyonrails.org/security.html#sessions)
 
 [authentication](http://www.millwoodonline.co.uk/blog/using-hassecurepassword-for-rails-authentication)
 
