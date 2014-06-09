@@ -40,6 +40,9 @@ Now that we have sessions, we can create conditionals on various actions in our 
 3. Let's also make a method `authorize` that renders our login page if a `!user_signed_in?`. We're going to call this method as a [before_action](http://guides.rubyonrails.org/action_controller_overview.html#filters) on our comments and posts controllers that will run this check before the edit, update, create, new, and destroy methods.
 4. This will help us in our header to render info about the logged in user, and create some view logic to only render a logout link and new post link if the user is logged in. Have the current user's name displayed too to let them know they're logged in.
 5. Refactor our forms that handle new comments to check if the user is signed in.
+6. Use the tests to guide how to build out this view logic.
+
+<em>Pass all of the integration tests.</em>
 
 ## Resources
 
