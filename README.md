@@ -20,6 +20,10 @@ We built out a user model a while back, but we haven't been doing much with it y
 6. Update our form for creating a new user to include email, password, and password confirmation. The passwords should have a password_field input.
 7. Let's also build out a _header partial that we render in application.html.erb that will have a Sign Up link, and other helpful navigation links.
 
+## Signing up with Sessions
+
+1. Make sure that when a new user signs up, their session is stored as well. You can handle this by setting the session id with the user id when creating a new user.
+
 ## Logging in with Sessions
 
 Now that we have our sign up process built out, we can expand it into a log in system. A user who is signed up should be able to log in to see certain pages. We'll be using sessions, which allow an application to keep track of a user and allow them to perform actions that are remembered by the application without authenticating on every request. A session is comprised of a hash of values, usually a user's id and other information, as well as a session id. Learn more from the documentation on [sessions in rails](http://guides.rubyonrails.org/security.html#sessions).
