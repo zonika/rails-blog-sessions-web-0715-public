@@ -15,6 +15,7 @@ describe 'user signup', :type => :feature do
     signup_valid
     click_link('New Post')
     expect(page).to have_content("#{@kitten.name}")
+    expect(page.get_rack_session_key('user_id')).to_not eq(nil)
   end
 end
 
@@ -23,6 +24,7 @@ describe 'user login', :type => :feature do
 
   it 'successfully logs in' do
     login_valid
+    expect(page.get_rack_session_key('user_id')).to_not eq(nil)
   end
 
   it 'fails to log in' do
@@ -34,6 +36,7 @@ describe 'user login', :type => :feature do
     click_link('Log Out')
     expect(current_path).to eq('/')
     expect(page).to have_content('Log In')
+    expect(page.get_rack_session).to_not include('user_id')
   end
 end
 

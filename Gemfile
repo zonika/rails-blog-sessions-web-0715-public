@@ -45,4 +45,5 @@ group :test, :development do
   gem "database_cleaner"
   gem "sqlite3"
   gem "pry"
+  gem 'rack_session_access'
 end
