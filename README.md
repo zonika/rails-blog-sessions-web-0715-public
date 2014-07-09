@@ -9,6 +9,8 @@ resources: 5
 This is the fifth iteration of our Blog App.
 
 We built out a user model a while back, but we haven't been doing much with it yet. Let's build out a signup and login system that prevents a user from writing a blog post or a comment without logging in. For now, we're going to build our own log in system using sessions.
+
+<em>Before anything</em>, note that when you generate models, controllers, etc, be sure to include this option, so that it skips tests (which we already have): `--no-test-framework`
  
 ## Signing up
 
