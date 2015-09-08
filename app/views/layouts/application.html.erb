@@ -7,6 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<% if !user_signed_in? %>
+<%= link_to "Sign Up", signup_path %>
+<%= link_to "Log In", login_path %>
+Log in to edit or delete your Post
+<% Post.all.each do |post| %>
+    <%= link_to "#{post.name}", "posts/#{post.id}" %> <br>
+  <% end %>
+<%else%>
+<%= current_user.name%>
+<%= link_to "Log Out", '/signout', method: 'delete' %>
+<% end %>
 
 <%= yield %>
 

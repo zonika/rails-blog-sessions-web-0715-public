@@ -1,0 +1,13 @@
+<%= form_tag '/sessions' do %>
+  <fieldset>
+    <div class="">
+      <%= label_tag "user[email]", ":email" %>
+      <%= text_field_tag "user[email]" %>
+    </div>
+    <div class="">
+      <%= label_tag "user[password]", ":password" %>
+      <%= password_field_tag "user[password]" %>
+    </div>
+    <%= submit_tag "Log In"%>
+  </fieldset>
+  <% end %>
